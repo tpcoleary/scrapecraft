@@ -1,1 +1,87 @@
+# Secrets
 .env
+.env.*
+**/auth.json
+keys.yaml
+*.key
+
+# Large binaries / archives
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.gz
+*.bz2
+*.7z
+*.img
+*.iso
+*.bin
+
+# Docker
+*.tar.gz
+docker-compose.override.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ML model weights
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Logs / runtime
+*.log
+*.tmp
+*.db
+*.sqlite3
+
+# Test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+coverage.xml
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Node
+node_modules/
+package-lock.json
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
