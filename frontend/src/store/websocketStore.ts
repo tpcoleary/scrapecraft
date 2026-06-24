@@ -28,7 +28,7 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => ({
 
     set({ connectionStatus: 'connecting' });
 
-    const wsUrl = process.env.REACT_APP_WS_URL || 'ws://localhost:8000';
+    const wsUrl = process.env.REACT_APP_WS_URL || 'ws://localhost:8002';
     const websocket = new WebSocket(`${wsUrl}/ws/${pipelineId}`);
 
     websocket.onopen = () => {
@@ -71,6 +71,7 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => ({
   disconnect: () => {
     const { ws } = get();
     if (ws) {
+      ws.onclose = null;
       ws.close();
       set({ ws: null, connectionStatus: 'disconnected' });
     }

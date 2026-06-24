@@ -18,9 +18,10 @@ class Settings(BaseSettings):
     JWT_EXPIRATION_HOURS: int = 24
     
     # CORS
-    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:80"]
+    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:80", "http://localhost:3002"]
     
     # OpenRouter Config
+    OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
     OPENROUTER_MODEL: str = "moonshotai/kimi-k2"
     
     # App Config

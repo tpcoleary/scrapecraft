@@ -2,11 +2,13 @@ services:
   backend:
     build: ./backend
     ports:
-      - "8000:8000"
+      - "8002:8000"
     environment:
       - DATABASE_URL=postgresql://user:pass@db:5432/scrapecraft
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
       - SCRAPEGRAPH_API_KEY=${SCRAPEGRAPH_API_KEY}
+      - OPENROUTER_BASE_URL=${OPENROUTER_BASE_URL}
+      - OPENROUTER_MODEL=${OPENROUTER_MODEL}
       - JWT_SECRET=${JWT_SECRET:-your-secret-key}
       - REDIS_URL=redis://redis:6379/0
     depends_on:
@@ -15,16 +17,18 @@ services:
     volumes:
       - ./backend:/app
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   frontend:
     build: ./frontend
     ports:
-      - "3000:80"
+      - "3002:80"
     depends_on:
       - backend
     environment:
-      - REACT_APP_API_URL=http://localhost:8000
-      - REACT_APP_WS_URL=ws://localhost:8000
+      - REACT_APP_API_URL=http://localhost:8002
+      - REACT_APP_WS_URL=ws://localhost:8002
 
   db:
     image: postgres:14
