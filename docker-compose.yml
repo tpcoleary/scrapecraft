@@ -3,13 +3,11 @@ services:
     build: ./backend
     ports:
       - "8002:8000"
+    env_file:
+      - /home/tpcoleary/litellm-proxy/.env
+      - .env
     environment:
       - DATABASE_URL=postgresql://user:pass@db:5432/scrapecraft
-      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
-      - SCRAPEGRAPH_API_KEY=${SCRAPEGRAPH_API_KEY}
-      - OPENROUTER_BASE_URL=${OPENROUTER_BASE_URL}
-      - OPENROUTER_MODEL=${OPENROUTER_MODEL}
-      - JWT_SECRET=${JWT_SECRET:-your-secret-key}
       - REDIS_URL=redis://redis:6379/0
     depends_on:
       - db

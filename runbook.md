@@ -50,6 +50,20 @@
 
 ---
 
+## 🔐 Secrets
+
+Keys are loaded into the backend container via `env_file` in `docker-compose.yml` — no shell environment variables required:
+
+```yaml
+env_file:
+  - /home/tpcoleary/litellm-proxy/.env   # OPENROUTER_API_KEY, SCRAPEGRAPH_API_KEY
+  - .env                                  # OPENROUTER_BASE_URL, OPENROUTER_MODEL, JWT_SECRET
+```
+
+`OPENROUTER_API_KEY` and `SCRAPEGRAPH_API_KEY` live in `~/litellm-proxy/.env` (master secrets file). The local `.env` holds non-secret config only. To rotate a key: edit `~/litellm-proxy/.env` and `docker compose up -d --force-recreate backend`.
+
+---
+
 ## Related Docs
 - Docker Compose Config: `file:///home/tpcoleary/workspace/scrapecraft/docker-compose.yml`
 - Service Catalog entry: `file:///C:/Users/Win11Pro1Tim/projects/service-catalog/docs/service_catalog.md#scrapecraft-exited`
