@@ -2,7 +2,7 @@ services:
   backend:
     build: ./backend
     ports:
-      - "8002:8000"
+      - "8012:8000"
     env_file:
       - /home/tpcoleary/litellm-proxy/.env
       - .env
@@ -25,8 +25,8 @@ services:
     depends_on:
       - backend
     environment:
-      - REACT_APP_API_URL=http://localhost:8002
-      - REACT_APP_WS_URL=ws://localhost:8002
+      - REACT_APP_API_URL=http://localhost:8012
+      - REACT_APP_WS_URL=ws://localhost:8012
 
   db:
     image: postgres:14
@@ -37,7 +37,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "15433:5432"
 
   redis:
     image: redis:7-alpine
