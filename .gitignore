@@ -49,6 +49,10 @@ ENV/
 env.bak/
 venv.bak/
 
+# Backup snapshots (kept on disk, not in git)
+*.bak
+*.bak-*
+
 # ML model weights
 *.safetensors
 *.gguf
