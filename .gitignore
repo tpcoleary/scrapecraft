@@ -76,6 +76,8 @@ htmlcov/
 .cache
 .pytest_cache/
 coverage.xml
+**/test-results/
+**/playwright-report/
 
 # IDE
 .vscode/

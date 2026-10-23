@@ -79,6 +79,18 @@ npm install
 npm start
 ```
 
+### Frontend Browser Smoke Test
+
+```bash
+cd frontend
+npm run test:e2e:local
+```
+
+The test starts an isolated frontend on `127.0.0.1:3022` unless
+`SCRAPECRAFT_E2E_BASE_URL` is supplied. It intercepts pipeline API calls with a
+fixture, so it does not create or execute a real pipeline. Use
+`npm run build` in `frontend/` for the production build check.
+
 ## Usage
 
 1. **Create a Pipeline**: Click "New Pipeline" to start
